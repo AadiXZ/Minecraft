@@ -11,7 +11,7 @@ save_block_image = "";
 
 function player_update()
 {
-    fabric.Img.fromURL("player.png",function(Img){
+    fabric.Image.fromURL("player.png",function(Img){
         save_player_image=Img;
 
         save_player_image.scaleToWidth(160);
@@ -27,7 +27,7 @@ function player_update()
 
 function update_block(GetImg)
 {
-  fabric.Img.fromURL(GetImg,function(Img){
+  fabric.Image.fromURL(GetImg,function(Img){
     save_block_image = Img;
 
     save_block_image.scaleToWidth(block_width);
@@ -114,5 +114,54 @@ function update_block(GetImg)
     update_block("cloud.jpg");
    }
   }
+
+  function up()
+  {
+    if(player_y>=0)
+    {
+     player_y = player_y - block_height;
+     console.log("block_image_height = "+block_height);
+     console.log("x = "+player_x+",y = "+player_y);
+     canvas.remove(save_player_image);
+     player_update();
+    }
+  }
+
+  function down()
+  {
+    if(player_y<=400)
+    {
+     player_y = player_y + block_height;
+     console.log("block_image_height = "+block_height);
+     console.log("x = "+player_x+",y = "+player_y);
+     canvas.remove(save_player_image);
+     player_update();
+    }
+  }
+
+  function left()
+  {
+    if(player_x>=0)
+    {
+     player_x = player_x - block_width;
+     console.log("block_image_width = "+block_width);
+     console.log("x = "+player_x+",y = "+player_y);
+     canvas.remove(save_player_image);
+     player_update();
+    }
+  }
+
+  function right()
+  {
+    if(player_x<=900)
+    {
+     player_x = player_x + block_width;
+     console.log("block_image_width = "+block_width);
+     console.log("x = "+player_x+",y = "+player_y);
+     canvas.remove(save_player_image);
+     player_update();
+    }
+  }
+
 
   
